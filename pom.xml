@@ -4,9 +4,9 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.4.1</version>
-		<relativePath/> <!-- lookup parent from repository -->
+	    <artifactId>spring-boot-starter-parent</artifactId>
+	    <version>2.1.4.RELEASE</version>
+	    <!-- <type>pom</type> -->
 	</parent>
 	<groupId>dkw.beer.srvr</groupId>
 	<artifactId>brewery-server</artifactId>
@@ -16,6 +16,8 @@
 
 	<properties>
 		<java.version>11</java.version>
+		<!-- The next property is for the delombok process -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
 
 	<dependencies>
@@ -59,6 +61,23 @@
 						</exclude>
 					</excludes>
 				</configuration>
+			</plugin>
+			<!-- To have an object delomboked you must place it in the following folder: -->
+			<!-- src/main/lombok -->
+			<!-- Generated delomboked code will be located in: -->
+			<!-- target/generated-sources/delombok -->
+			<plugin>
+				<groupId>org.projectlombok</groupId>
+				<artifactId>lombok-maven-plugin</artifactId>
+				<version>1.18.10.0</version>
+				<executions>
+					<execution>
+						<phase>generate-sources</phase>
+						<goals>
+							<goal>delombok</goal>
+						</goals>
+					</execution>
+				</executions>
 			</plugin>
 		</plugins>
 	</build>
