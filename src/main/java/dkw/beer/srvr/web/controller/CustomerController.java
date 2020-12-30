@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dkw.beer.srvr.services.CustomerService;
 import dkw.beer.srvr.web.model.CustomerDto;
+import lombok.extern.slf4j.Slf4j;
 
+@Slf4j
 @RequestMapping("/api/v1/customer")
 @RestController
 public class CustomerController {
@@ -32,11 +34,13 @@ public class CustomerController {
 
 	@GetMapping("/{customerId}")
 	public ResponseEntity<CustomerDto> getCustomer(@PathVariable("customerId") UUID customerId){
+		log.info(String.format("-->> Server - Get Customer by Id: %s", customerId.toString()));
 		return new ResponseEntity<>(customerService.getCustomerById(customerId), HttpStatus.OK);
 	}
 
 	@PostMapping
 	public ResponseEntity createCustomer(@RequestBody CustomerDto customerDto) {
+		log.info(String.format("-->> Server - Save Customer: %s", customerDto.toString()));
 		CustomerDto savedDto = customerService.saveNewCustomer(customerDto);
 		
 		HttpHeaders headers = new HttpHeaders();
@@ -47,15 +51,17 @@ public class CustomerController {
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
 	}
 	
-	@PutMapping("/customerId")
+	@PutMapping("/{customerId}")
 	public ResponseEntity updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDto customerDto) {
+		log.info(String.format("-->> Server - Update Customer - id: %s, Customer: %s", customerId.toString(), customerDto.toString()));
 		customerService.updateCustomer(customerId, customerDto);
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
 	
-	@DeleteMapping("/customerId")
+	@DeleteMapping("/{customerId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)
 	public void deleteCustomer(@PathVariable("customerId") UUID customerId) {
+		log.info(String.format("-->> Server - Delete Customer by id: %s", customerId.toString()));
 		customerService.deleteById(customerId);
 	}
 }

@@ -17,7 +17,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import dkw.beer.srvr.services.BeerService;
 import dkw.beer.srvr.web.model.BeerDto;
+import lombok.extern.slf4j.Slf4j;
 
+//@Deprecated
+@Slf4j
 @RequestMapping("api/v1/beer")
 @RestController
 public class BeerController {
@@ -32,17 +35,18 @@ public class BeerController {
 
 	@GetMapping("/{beerId}")
 	public ResponseEntity<BeerDto> getBeer(@PathVariable("beerId") UUID beerId) {
-		
+		log.info(String.format("-->> Server - Get beer by Id: %s", beerId.toString()));
 		return new ResponseEntity<>(beerService.getBeerById(beerId), HttpStatus.OK);
 	}
 	
 	@PostMapping // create a new beer
 	public ResponseEntity createBeer(@RequestBody BeerDto beerDto) {
+		log.info(String.format("-->> Server - Save beer: %s", beerDto.toString()));
 		BeerDto savedDto = beerService.saveNewBeer(beerDto);
 		
 		HttpHeaders headers = new HttpHeaders();
 		//TODO add hostname with value from properties file
-		String url = String.format("%s/%s", "localhost:8080/api/v1/beer", savedDto.getId().toString());
+		String url = String.format("%s/%s", "http://localhost:8080/api/v1/beer", savedDto.getId().toString());
 		headers.add("Location", url);
 		
 		return new ResponseEntity<>(headers, HttpStatus.CREATED);
@@ -50,6 +54,7 @@ public class BeerController {
 	
 	@PutMapping("/{beerId}")
 	public ResponseEntity updateBeer(@PathVariable("beerId") UUID beerId, @RequestBody BeerDto beerDto) {
+		log.info(String.format("-->> Server - Update beer - id: %s, beer: %s", beerId.toString(), beerDto.toString()));
 		beerService.updateBeer(beerId, beerDto);
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
 	}
@@ -57,6 +62,7 @@ public class BeerController {
 	@DeleteMapping("/{beerId}")
 	@ResponseStatus(HttpStatus.NO_CONTENT)  // will force a return object, although the method is void
 	public void deleteBeer(@PathVariable("beerId") UUID beerId) {
+		log.info(String.format("-->> Server - Delete beer by id: %s", beerId.toString()));
 		beerService.deleteById(beerId);
 	}
 }
