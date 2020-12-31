@@ -7,11 +7,13 @@ import java.util.UUID;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Version;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import lombok.AllArgsConstructor;
@@ -28,10 +30,11 @@ import lombok.Setter;
 @Entity
 public class Beer {
 	@Id
-	@GeneratedValue(generator = "UUID")
-	@GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
-	@Column(length = 36, columnDefinition = "varchar", updatable = false, nullable = false)
-	private UUID id;
+	// Must have hibernate 5+  
+	@GeneratedValue  
+	// or use @GeneratedValue(generator = "uuid2") with @GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Type(type="uuid-char") @Column(length = 36)
+	UUID id;
 	@Version
 	private Long version;
 	@CreationTimestamp

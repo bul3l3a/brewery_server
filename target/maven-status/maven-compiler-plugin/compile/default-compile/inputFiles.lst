@@ -1,6 +1,7 @@
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\CustomerServiceImpl.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\v2\BeerServiceV2Impl.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\model\BeerDto.java
+C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\domain\Beer.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\BeerServiceImpl.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\CustomerService.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\model\v2\BeerDtoV2.java
@@ -8,8 +9,10 @@ C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\MainApp.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\v2\BeerServiceV2.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\services\BeerService.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\model\CustomerDto.java
+C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\repos\BeerRepo.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\controller\CustomerController.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\controller\v2\BeerControllerV2.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\model\v2\BeerStyleEnum.java
 C:\erepmysrc\sfg_demos\brewery-server\target\generated-sources\delombok\BeerDto.java
+C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\bootstrap\BeerLoader.java
 C:\erepmysrc\sfg_demos\brewery-server\src\main\java\dkw\beer\srvr\web\controller\BeerController.java

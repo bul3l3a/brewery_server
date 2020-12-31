@@ -1,3 +1,4 @@
+target/
 ######################
 # Project Specific
 ######################
@@ -139,3 +140,12 @@ Desktop.ini
 ######################
 .eslintcache
 /.idea/
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+.springBeans
+.sts4-cache
