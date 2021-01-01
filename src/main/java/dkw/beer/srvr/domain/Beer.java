@@ -32,7 +32,7 @@ public class Beer {
 	@Id
 	// Must have hibernate 5+  
 	@GeneratedValue  
-	// or use @GeneratedValue(generator = "uuid2") with @GenericGenerator(name = "uuid2", strategy = "uuid2")
+	// or use @GeneratedValue(generator = "uuid") with @GenericGenerator(name = "uuid", strategy = "uuid2")
 	@Type(type="uuid-char") @Column(length = 36)
 	UUID id;
 	@Version

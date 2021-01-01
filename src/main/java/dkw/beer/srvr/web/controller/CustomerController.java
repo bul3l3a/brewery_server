@@ -1,11 +1,18 @@
 package dkw.beer.srvr.web.controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import javax.validation.ConstraintViolationException;
+import javax.validation.Valid;
+
+import org.hibernate.exception.spi.ViolatedConstraintNameExtracter;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +46,7 @@ public class CustomerController {
 	}
 
 	@PostMapping
-	public ResponseEntity createCustomer(@RequestBody CustomerDto customerDto) {
+	public ResponseEntity createCustomer(@Valid @RequestBody CustomerDto customerDto) {
 		log.info(String.format("-->> Server - Save Customer: %s", customerDto.toString()));
 		CustomerDto savedDto = customerService.saveNewCustomer(customerDto);
 		
@@ -52,7 +59,7 @@ public class CustomerController {
 	}
 	
 	@PutMapping("/{customerId}")
-	public ResponseEntity updateCustomer(@PathVariable("customerId") UUID customerId, @RequestBody CustomerDto customerDto) {
+	public ResponseEntity updateCustomer(@PathVariable("customerId") UUID customerId, @Valid @RequestBody CustomerDto customerDto) {
 		log.info(String.format("-->> Server - Update Customer - id: %s, Customer: %s", customerId.toString(), customerDto.toString()));
 		customerService.updateCustomer(customerId, customerDto);
 		return new ResponseEntity(HttpStatus.NO_CONTENT);
@@ -64,4 +71,5 @@ public class CustomerController {
 		log.info(String.format("-->> Server - Delete Customer by id: %s", customerId.toString()));
 		customerService.deleteById(customerId);
 	}
+	
 }

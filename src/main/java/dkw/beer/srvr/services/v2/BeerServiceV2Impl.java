@@ -2,8 +2,11 @@ package dkw.beer.srvr.services.v2;
 
 import java.util.UUID;
 
+import org.springframework.stereotype.Service;
+
 import dkw.beer.srvr.web.model.v2.BeerDtoV2;
 
+@Service
 public class BeerServiceV2Impl implements BeerServiceV2 {
 
 	@Override
